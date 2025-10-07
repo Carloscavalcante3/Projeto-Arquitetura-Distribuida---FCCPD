@@ -4,6 +4,7 @@ import threading
 import json
 from datetime import datetime
 import uuid
+import time 
 
 HOST = '127.0.0.1'
 PORT = 8888
@@ -35,6 +36,9 @@ def handle_client(conn, addr):
         
         denuncia_cliente = json.loads(data.decode('utf-8'))
         print(f"[{addr}] Denúncia recebida: {denuncia_cliente['tipo']}")
+
+        print(f"[{addr}] Processando a denúncia (10 segundos)...")
+        time.sleep(10) 
 
         denuncia_completa = {
             "protocolo": str(uuid.uuid4()),
